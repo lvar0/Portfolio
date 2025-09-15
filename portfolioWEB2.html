@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --color-principal: #223750;
+      --color-secundario: #fefefe;
+      --color-texto: #333;
+    }
+
+    /* Ajustes globales */
+    html {
+      scroll-behavior: smooth;        /* desplazamiento suave */
+      scroll-padding-top: 120px;      /* evita ocultar secciones por el header sticky */
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--color-secundario);
+      color: var(--color-texto);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: var(--color-principal);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    nav {
+      margin-top: 0.8rem;
+    }
+
+    nav a {
+      margin: 0 0.6rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    nav a:hover {
+      color: #ffd166;
+      transform: scale(1.05);
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      scroll-margin-top: 120px; /* otra forma de evitar que el header oculte la sección */
+    }
+
+    section:hover { transform: translateY(-5px); }
+
+    section h2 {
+      color: var(--color-principal);
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    ul { list-style: none; padding-left: 0; }
+    ul li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background: #eee;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    /* Imagen perfil */
+    .foto-perfil {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      object-fit: cover;
+    }
+
+    /* Layout de Sobre mí (texto a la izquierda, foto a la derecha) */
+    .sobre-mi-contenido {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .sobre-mi-texto { flex: 2; text-align: left; }
+    .sobre-mi-foto { flex: 1; display:flex; justify-content:center; }
+
+    /* Responsive para móvil */
+    @media (max-width: 768px) {
+      .sobre-mi-contenido {
+        flex-direction: column;
+        text-align: center;
+      }
+      .sobre-mi-texto { text-align: center; }
+    }
+
+    /* Animación aparición */
+    [data-animado] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    [data-animado].activo {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fa-solid fa-laptop-code"></i> Álvaro Bautista</h1>
+    <p>Para que me conozcas un poco mejor.</p>
+    <nav aria-label="navegación principal">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Competencias</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="sobre-mi" data-animado>
+      <h2><i class="fa-solid fa-user"></i> Sobre mí</h2>
+      <div class="sobre-mi-contenido">
+        <div class="sobre-mi-texto">
+          <p>Hola, soy <strong>Álvaro</strong>, estudiante de segundo año del ciclo formativo <strong>DAM</strong>.</p>
+          <p>Me considero alguien a quien le gusta trabajar en equipo y conectar con las personas. Disfruto mucho programando, sobre todo con Java en el backend, 
+          y me motiva aprender cosas nuevas cada día. Soy trabajador, competitivo y siempre intento dar lo mejor de mí en cada proyecto.</p>
+        </div>
+        <div class="sobre-mi-foto">
+          <img src="image.JPG" alt="Foto de Álvaro" class="foto-perfil">
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" data-animado>
+      <h2><i class="fa-solid fa-folder-open"></i>Competencias</h2>
+      <p>Estas son las principales competencias y herramientas que he explorado y puesto en práctica a lo largo del primer año del curso.</p>
+      <ul>
+        <li><strong>Lenguajes de programación:</strong> Java, JavaScript (nivel básico), SQL, Python (nivel básico)</li>
+        <li><strong>Desarrollo web:</strong> HTML5, CSS3</li>
+        <li><strong>Bases de datos:</strong> MySQL, PostgreSQL, Supabase</li>
+        <li><strong>Aplicaciones de escritorio:</strong> Java Swing, JPA</li>
+        <li><strong>Entornos:</strong> IntelliJ IDEA, NetBeans, VS Code</li>
+      </ul>
+    </section>
+
+    <section id="contacto" data-animado>
+      <h2><i class="fa-solid fa-envelope"></i> Contacto</h2>
+      <p>Puedes contactarme aquí:</p>
+      <ul>
+        <li><i class="fa-brands fa-linkedin"></i> <a href="#" id="https://www.linkedin.com/in/%C3%A0lvaro-b-a19a7b334/">LinkedIn</a></li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:alvaroaca18@gmail.com">alvaroaca18@gmail.com</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 - Álvaro Bautista | Creado con ❤️
+  </footer>
+
+  <script>
+    // Código para animaciones al entrar en viewport (IntersectionObserver)
+    document.addEventListener('DOMContentLoaded', () => {
+      const elementos = document.querySelectorAll('[data-animado]');
+
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('activo');
+              observer.unobserve(entry.target); // animar solo la primera vez
+            }
+          });
+        }, { threshold: 0.15 });
+        elementos.forEach(el => obs.observe(el));
+      } else {
+        // Fallback si no hay IntersectionObserver
+        const mostrarScroll = () => {
+          elementos.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 150) el.classList.add('activo');
+          });
+        };
+        window.addEventListener('scroll', mostrarScroll);
+        mostrarScroll();
+      }
+
+      // Manejar clicks en el nav para ajustar el offset del header (evita que el header sticky tape la sección)
+      const headerOffset = 110; // ajusta este valor si el header cambia de tamaño
+      document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
